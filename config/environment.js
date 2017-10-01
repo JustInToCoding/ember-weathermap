@@ -21,6 +21,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      OPENWEATHERMAP_APIKEY: '6b743257343b392f73db7829d4c33b8d'
     }
   };
 
