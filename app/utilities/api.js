@@ -1,5 +1,5 @@
 import fetch from 'fetch';
-import ENV from '../../config/environment';
+import ENV from '../config/environment';
 
 const { APP: { OPENWEATHERMAP_APIKEY } } = ENV;
 
@@ -13,7 +13,7 @@ function get(url) {
 }
 
 export async function getWeather(latitude, longitude) {
-  let response = await get(`api.openweathermap.org/data/2.5/weather?lat=${latitude}&${longitude}=${OPENWEATHERMAP_APIKEY}`);
+  let response = await get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${OPENWEATHERMAP_APIKEY}`);
   let contentType = response.headers.get('content-type');
   if(contentType && contentType.includes('application/json')) {
     let jsonResponse = await response.json();
