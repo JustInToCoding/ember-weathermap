@@ -11,10 +11,14 @@ test('it renders', function(assert) {
 
   this.set('city', 'Nijmegen');
   this.set('country', 'nl');
+  this.on('myAction', function(city, country) {
+    this.set('city', city);
+    this.set('country', country);
+   });
 
   // Template block usage:
   this.render(hbs`
-    {{weather-input city=city country=country}}
+    {{weather-input city=city country=country onUpdate=(action "onUpdate")}}
   `);
 
   assert.equal(this.$().text().trim(), 'template block text');
